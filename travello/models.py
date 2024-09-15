@@ -23,12 +23,12 @@ class Detailed_desc(models.Model):
     img1=models.ImageField(upload_to='pics')
     img2 = models.ImageField(upload_to='pics')
     desc = models.TextField()
-    day1= models.CharField(max_length=200)
-    day2 = models.CharField(max_length=200)
-    day3 = models.CharField(max_length=200)
-    day4 = models.CharField(max_length=200)
-    day5 = models.CharField(max_length=200)
-    day6 = models.CharField(max_length=200)
+
+
+class DayDescription(models.Model):
+    detailed_desc = models.ForeignKey(Detailed_desc, related_name='day_descriptions', on_delete=models.CASCADE)
+    day_number = models.IntegerField()  # 1, 2, 3, etc.
+    description = models.CharField(max_length=200)  # Activity for that day
 
 class pessanger_detail(models.Model):
     Trip_id = models.AutoField(primary_key=True)

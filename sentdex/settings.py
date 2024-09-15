@@ -153,4 +153,7 @@ EMAIL_HOST_PASSWORD = ''
 from django.core.management.utils import get_random_secret_key
 print(get_random_secret_key())
 
+# settings.py
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 

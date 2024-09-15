@@ -8,6 +8,7 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('logout', views.logout, name='logout'),
     path('search', views.search, name='search'),
+    path('contact' , views.contact , name='contact'),
     path('destination_list/<str:city_name>', views.destination_list, name='destination_list'),
     path('destination_list/destination_details/<str:city_name>', views.destination_details, name='destination_details'),
     path('destination_details/<str:city_name>', views.destination_details, name='destination_details'),

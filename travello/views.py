@@ -113,6 +113,13 @@ def login(request):
 
 
 
+def home(request):
+     return redirect('index')
+
+def contact(request):
+    return render(request , "contact.html")
+
+
 def logout(request):
     auth.logout(request)
     return redirect('index')
