@@ -8,7 +8,7 @@
                     <div class="footer_widget">
                         <div class="footer_logo">
                             <a href="#">
-                                <img src="{% static 'img/footer_logo.png' %}" alt="">
+                                <img src="{% static 'img/logo.png' %}" alt="">
                             </a>
                         </div>
                         <p>Orchid Apple<br> lane New Ahemdabad <br>
@@ -54,9 +54,10 @@
                         </h3>
                         <ul class="links">
                             
-                            <li><a href="#">About</a></li>
+                            <li><a href="{% url 'about' %}">About</a>
                             
-                            <li><a href="#"> Contact</a></li>
+                            <li><a href="{% url 'contact' %}"> Contact</a></li>
+                            <li><a href="{% url 'wishlist' %}">Whishlist</a>
                         </ul>
                     </div>
                 </div>
@@ -66,14 +67,14 @@
                             Popular destination
                         </h3>
                         <ul class="links double_links">
-                            <li><a href="#">Indonesia</a></li>
-                            <li><a href="#">America</a></li>
-                            <li><a href="#">India</a></li>
-                            <li><a href="#">Switzerland</a></li>
-                            <li><a href="#">Italy</a></li>
-                            <li><a href="#">Canada</a></li>
-                            <li><a href="#">Franch</a></li>
-                            <li><a href="#">England</a></li>
+                            <li><a href="#">Dwarka</a></li>
+                            <li><a href="#">Goa</a></li>
+                            <li><a href="#">Manali</a></li>
+                            <li><a href="#">Kachh</a></li>
+                            <li><a href="#">Kochi</a></li>
+                            <li><a href="#">Udaipur</a></li>
+                            <li><a href="#">Kashmir</a></li>
+                            <li><a href="#">Ujjain</a></li>
                         </ul>
                     </div>
                 </div>
@@ -125,12 +126,12 @@
             <div class="row">
                 <div class="col-xl-12">
                     <p class="copy_right text-center">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        
                         Copyright &copy;
                         <script>
                             document.write(new Date().getFullYear());
                         </script> All rights reserved </i> by  Driftdrive</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                       
                     </p>
                 </div>
             </div>

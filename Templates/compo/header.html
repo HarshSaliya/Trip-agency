@@ -9,11 +9,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
-    <!-- Place favicon.ico in the root directory -->
-
-    <!-- CSS here -->
+   
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
@@ -37,53 +34,62 @@
                         <div class="row align-items-center">
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="{% url 'index' %}">
-                                        <img src="{% static 'img/logo.png' %}" alt="Logo">
+                                    <a href="{% url 'index' %}" class="logo-container">
+                                        <!-- Favicon -->
+                                        <!-- Ensure your favicon link is correct -->
+                                        <link rel="icon" href="path/to/favicon.ico" type="image/x-icon">
+                                        
+                                        <!-- Text Logo -->
+                                        <span class="logo-text">Destiny<span style="color: orange;">Drift</span></span>
                                     </a>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
                                 <div class="main-menu d-none d-lg-block">
                                     <nav>
-                                        <ul id="navigation">
+                                        <ul id="navigation" class="d-flex justify-content-center">
                                             <li><a class="active" href="{% url 'index' %}">Home</a></li>
-                                            <li><a href="{% url 'about' %}">About</a></li>
                                             <li><a href="{% url 'upcoming_trips' %}">Upcoming Trips</a></li>
-                                            {% if user.is_authenticated %}
-                                            <li>Hello, {{ user.first_name }}</li>
-                                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                                            {% if user.is_authenticated %} 
+                                                <li><a href="{% url 'my_trips' %}">My trips</a></li>
+                                                <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
                                             {% else %}
-                                            <li><a href="{% url 'login' %}">Login</a></li>
-                                            <li><a href="{% url 'register' %}">Register</a></li>
+                                                <li><a href="{% url 'login' %}">Login</a></li>
+                                                <li><a href="{% url 'register' %}">Register</a></li>
                                             {% endif %}
-                                            <li><a href="#">Blog <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    
-                                                    
-                                                </ul>
-                                            </li>
-                                          <li><a href="{% url 'contact' %}">Contact</a></li> 
+                                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                                            <li><a href="{% url 'about' %}">About</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 d-none d-lg-block">
-                                <div class="social_wrap d-flex align-items-center justify-content-end">
-                                    <div class="number">
-                                        <p><i class="fa fa-phone"></i> 0261-25569</p>
-                                    </div>
-                                    <div class="social_links d-none d-xl-block">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
+                            <div class="col-xl-4 col-lg-4 d-flex justify-content-end align-items-center">
+                                <!-- Phone and Social Links -->
+                                <div class="d-flex align-items-center" style="margin-right: 20px;">
+                                    <i class="fa fa-phone" aria-hidden="true" style="margin-right: 5px;"></i>
+                                    <p style="margin: 0;">987766544</p>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
+                                
+                                <div class="social_links d-flex align-items-center" style="margin-right: 20px;">
+                                    <ul class="d-flex" style="list-style: none; padding: 0; margin: 0;">
+                                        <li><a href="#" style="margin-right: 10px;"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#" style="margin-right: 10px;"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#" style="margin-right: 10px;"><i class="fa fa-facebook"></i></a></li>
+                                    </ul>
+                                </div>
+    
+                                <!-- User Links -->
+                                <div class="user_links d-flex align-items-center">
+                                    {% if user.is_authenticated %}
+                                        <span style="margin-right: 10px;">Hello, {{ user.first_name }}</span>
+                                        <a href="{% url 'logout' %}" title="Logout">
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'login' %}" style="margin-right: 10px;">Login</a>
+                                        <a href="{% url 'register' %}">Register</a>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -91,6 +97,7 @@
             </div>
         </div>
     </header>
+    
 
     {% block content %}
     {% endblock %}

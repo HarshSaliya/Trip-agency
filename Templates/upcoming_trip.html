@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Travelo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"> <!-- Link to Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    {% include 'compo/header.html' %}
+
+    <!-- Search Form -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form method="GET" action="{% url 'search_destinations' %}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="Search for a destination..." value="{{ request.GET.q }}">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- popular_destination_area_start -->
+    <div class="popular_destination_area py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-6 text-center">
+                    <h3 class="section_title">Popular Destinations</h3>
+                    <p class="text-muted">Discover the beauty of these incredible places.</p>
+                </div>
+            </div>
+            <div class="row">
+                {% for dest in dests %}
+                    <div class="col-lg-6 mb-4"> <!-- 2 destinations per row -->
+                        <div class="card shadow-sm border-0">
+                            <img src="{{ dest.img1.url }}" class="card-img-top" alt="{{ dest.country }} Image" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ dest.country }}</h5>
+                                <p class="card-text">{{ dest.number }} Places</p>
+                                <a href="{% url 'destination_list' dest.country %}" class="btn btn-primary">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:2 %} <!-- Start a new row after every 2 items -->
+                        </div><div class="row"> <!-- Close the current row and start a new one -->
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- popular_destination_area_end -->
+
+    {% include 'compo/footer.html' %}
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
